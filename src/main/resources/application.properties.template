@@ -1,0 +1,115 @@
+############################################
+#           Database Connection            #
+############################################
+
+# JDBC URL (replace YOUR_DB_NAME with your database)
+spring.datasource.url=jdbc:mysql://localhost:3306/${DB_NAME}?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+
+# Database credentials
+spring.datasource.username=${DB_USERNAME}
+spring.datasource.password=${DB_PASSWORD}
+
+# Driver class (usually unchanged)
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+
+############################################
+#           Hibernate (JPA) Settings       #
+############################################
+
+# Dialect for MySQL 8
+spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect
+
+# Auto DDL: validate | update | create | create-drop  (choose appropriate)
+spring.jpa.hibernate.ddl-auto=${HIBERNATE_DDL_AUTO}
+
+# Show SQL in console (true/false)
+spring.jpa.show-sql=${HIBERNATE_SHOW_SQL:true}
+
+# Format SQL (true/false)
+spring.jpa.properties.hibernate.format_sql=${HIBERNATE_FORMAT_SQL:true}
+
+
+############################################
+#       Connection Pool (HikariCP)         #
+############################################
+
+# Maximum number of connections in the pool
+spring.datasource.hikari.maximum-pool-size=${HIKARI_MAX_POOL_SIZE:5}
+
+# Minimum idle connections
+spring.datasource.hikari.minimum-idle=${HIKARI_MIN_IDLE:2}
+
+
+############################################
+#        File Upload (Multipart)           #
+############################################
+
+# Enable multipart support (true/false)
+spring.servlet.multipart.enabled=true
+
+# Maximum file size for uploads
+spring.servlet.multipart.max-file-size=512MB
+
+# Maximum request size for multipart/form-data
+spring.servlet.multipart.max-request-size=512MB
+
+
+############################################
+#           Amazon AWS (S3)                #
+############################################
+
+# AWS Access Keys
+aws.accessKeyId=${AWS_ACCESS_KEY_ID}
+aws.secretKey=${AWS_SECRET_ACCESS_KEY}
+
+# AWS region (e.g., eu-north-1)
+aws.region=${AWS_REGION}
+
+# S3 bucket name where videos will be stored
+aws.s3.bucket=${AWS_S3_BUCKET}
+
+
+############################################
+#           Mail (SMTP/Gmail)              #
+############################################
+
+# SMTP host (e.g., for Gmail)
+spring.mail.host=smtp.gmail.com
+
+# SMTP port (e.g., 587 for TLS)
+spring.mail.port=587
+
+# Sender email (replace with your own)
+spring.mail.username=${MAIL_USERNAME}
+
+# Sender email password or app-specific password
+spring.mail.password=${MAIL_PASSWORD}
+
+# SMTP authentication (true/false)
+spring.mail.properties.mail.smtp.auth=true
+
+# Enable STARTTLS (true/false)
+spring.mail.properties.mail.smtp.starttls.enable=true
+
+
+############################################
+#            Stripe Payment                #
+############################################
+
+# Your Stripe secret key (live or test)
+stripe.api.key=${STRIPE_API_KEY}
+
+# (Optional) Your Stripe publishable key (if needed)
+# stripe.publishable.key=${STRIPE_PUBLISHABLE_KEY}
+
+# Your Stripe webhook secret (for verifying events)
+stripe.webhook.secret=${STRIPE_WEBHOOK_SECRET}
+
+
+############################################
+#      JSON Web Token (JWT) Settings       #
+############################################
+
+# Secret used to sign/verify JWTs
+jwt.secret=${JWT_SECRET}
